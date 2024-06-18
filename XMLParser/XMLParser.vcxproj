@@ -130,6 +130,7 @@
     <ClCompile Include="Child.cpp" />
     <ClCompile Include="Parent.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="XMLDocument.cpp" />
     <ClCompile Include="XMLParser.cpp" />
     <ClCompile Include="XPath.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Queue.hpp" />
     <ClInclude Include="Root.h" />
     <ClInclude Include="String.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="Vector.hpp" />
     <ClInclude Include="XMLDocument.h" />
     <ClInclude Include="XPath.h" />

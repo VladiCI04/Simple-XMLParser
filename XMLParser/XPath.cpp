@@ -9,14 +9,11 @@ void printQuery(Queue<String> queryResult) {
 		std::cout << queryResult.peek() << std::endl;
 		queryResult.pop();
 	}
-
-	std::cout << "-------------------------------------------" << std::endl;
 }
 
 void printQuery(String queryResult) {
 	counter = 1;
 	std::cout << queryResult << std::endl;
-	std::cout << "-------------------------------------------" << std::endl;
 }
 
 XPath::XPath(XMLDocument& document) : curDocument(document)
@@ -44,7 +41,7 @@ void XPath::execute(const String query)
 		printQuery(curDocument=query);
 	}
 	else {
-		throw std::exception("Invalid query!");
+		std::cout << "Invalid query!" << std::endl << std::endl;
 	}
 }
 

@@ -16,6 +16,8 @@ public:
 
 	void addChild(const Child& child);
 
+	void setValue(String value);
+
 	Queue<Child>& getChildren();
 	String getTag() const;
 	String getAttribute() const;

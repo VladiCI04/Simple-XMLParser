@@ -12,6 +12,11 @@ void Parent::addChild(const Child& child)
     children.push(child);
 }
 
+void Parent::setValue(String value)
+{
+	this->value = value;
+}
+
 Queue<Child>& Parent::getChildren()
 {
 	return children;

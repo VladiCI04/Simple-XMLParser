@@ -12,6 +12,8 @@ public:
 	Child();
 	Child(const String tag, const String attribute, const String attributeValue, const String value);
 
+	void setValue(String value);
+
 	String getTag() const;
 	String getAttribute() const;
 	String getAttributeValue() const;

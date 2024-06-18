@@ -7,6 +7,11 @@ Child::Child(const String tag, const String attribute, const String attributeVal
 
 }
 
+void Child::setValue(String value) 
+{
+    this->value = value;
+}
+
 String Child::getTag() const
 {
     return tag;

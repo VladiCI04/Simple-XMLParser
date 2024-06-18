@@ -1,26 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\",
+  "WorkspaceRootPath": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XMLParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:UI.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:UI.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XMLDocument.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XMLDocument.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XPath.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\SU_FMI_OOP\\Dom_OOP1_VladimirIvanov_9MI0600366_SI_1Group\\1\\Zad1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XPath.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F551BC3C-279B-4C82-91CA-2E0F0CBAADA9}|XMLParser.vcxproj|solutionrelative:XMLParser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,65 +41,106 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "XMLDocument.cpp",
-              "DocumentMoniker": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.cpp",
-              "RelativeDocumentMoniker": "XMLDocument.cpp",
-              "ToolTip": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.cpp",
-              "RelativeToolTip": "XMLDocument.cpp",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAAwE4AAAANAAAA",
+              "DocumentIndex": 5,
+              "Title": "Zad1.cpp",
+              "DocumentMoniker": "D:\\SU_FMI_OOP\\Dom_OOP1_VladimirIvanov_9MI0600366_SI_1Group\\1\\Zad1.cpp",
+              "ToolTip": "D:\\SU_FMI_OOP\\Dom_OOP1_VladimirIvanov_9MI0600366_SI_1Group\\1\\Zad1.cpp",
+              "ViewState": "AQIAAPwAAAAAAAAAAAAAAP0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-17T20:11:03.725Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "XMLDocument.h",
-              "DocumentMoniker": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.h",
-              "RelativeDocumentMoniker": "XMLDocument.h",
-              "ToolTip": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLDocument.h",
-              "RelativeToolTip": "XMLDocument.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-17T20:02:28.072Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "XPath.cpp",
-              "DocumentMoniker": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.cpp",
-              "RelativeDocumentMoniker": "XPath.cpp",
-              "ToolTip": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.cpp",
-              "RelativeToolTip": "XPath.cpp",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADQAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-17T19:47:42.872Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "XPath.h",
-              "DocumentMoniker": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.h",
-              "RelativeDocumentMoniker": "XPath.h",
-              "ToolTip": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XPath.h",
-              "RelativeToolTip": "XPath.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-17T19:42:57.529Z"
+              "WhenOpened": "2024-06-18T12:34:11.177Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UI.cpp",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.cpp",
+              "RelativeDocumentMoniker": "UI.cpp",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.cpp",
+              "RelativeToolTip": "UI.cpp",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-18T12:26:03.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UI.h",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.h",
+              "RelativeDocumentMoniker": "UI.h",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\UI.h",
+              "RelativeToolTip": "UI.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-18T12:25:26.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "XMLDocument.cpp",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.cpp",
+              "RelativeDocumentMoniker": "XMLDocument.cpp",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.cpp",
+              "RelativeToolTip": "XMLDocument.cpp",
+              "ViewState": "AQIAAM0AAAAAAAAAAAAAAM0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-17T20:11:03.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "XMLDocument.h",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.h",
+              "RelativeDocumentMoniker": "XMLDocument.h",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLDocument.h",
+              "RelativeToolTip": "XMLDocument.h",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-17T20:02:28.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "XPath.cpp",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.cpp",
+              "RelativeDocumentMoniker": "XPath.cpp",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.cpp",
+              "RelativeToolTip": "XPath.cpp",
+              "ViewState": "AQIAACAAAAAAAAAAAAAAACsAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-06-17T19:47:42.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "XPath.h",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.h",
+              "RelativeDocumentMoniker": "XPath.h",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XPath.h",
+              "RelativeToolTip": "XPath.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-17T19:42:57.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "XMLParser.cpp",
-              "DocumentMoniker": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLParser.cpp",
+              "DocumentMoniker": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLParser.cpp",
               "RelativeDocumentMoniker": "XMLParser.cpp",
-              "ToolTip": "D:\\SU_FMI_OOP\\OOP Pract Dom\\XMLParser\\XMLParser.cpp",
+              "ToolTip": "C:\\Users\\Vladi\\OneDrive - Software University (SoftUni)\\Desktop\\GitHub\\XMLParser\\XMLParser\\XMLParser.cpp",
               "RelativeToolTip": "XMLParser.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAcwBQAAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-15T18:32:21.755Z",
               "EditorCaption": ""
