@@ -1,0 +1,23 @@
+﻿  XMLDocument.cpp
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(33,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(45,69): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(81,61): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(92,70): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(122,69): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(123,64): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(123,104): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(142,66): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(162,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(163,67): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(164,78): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(165,88): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(166,74): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XMLDocument.cpp(171,62): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+  XMLParser.cpp
+  XPath.cpp
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XPath.cpp(29,57): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XPath.cpp(30,58): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XPath.cpp(31,55): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\XPath.cpp(32,58): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+  Generating Code...
+  XMLParser.vcxproj -> D:\SU_FMI_OOP\OOP Pract Dom\XMLParser\x64\Debug\XMLParser.exe

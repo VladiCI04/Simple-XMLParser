@@ -1,0 +1,10 @@
+<person id="0">
+	<name>John Smith</name>
+	<address type="home">Brooklyn, NY</address>
+<address type="work">Manhattan, NYC</address>
+	<occupation>dentist</occupation>
+</person>
+<person id="1">
+	<name>Ivan Petrov</name>
+	<address>Bulgaria</address>
+</person>
