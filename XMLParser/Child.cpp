@@ -7,7 +7,7 @@ Child::Child(const String tag, const String attribute, const String attributeVal
 
 }
 
-void Child::setValue(String value) 
+void Child::setValue(String value)
 {
     this->value = value;
 }

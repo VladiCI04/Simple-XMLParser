@@ -1,9 +1,9 @@
 #pragma once
-#include "Root.h"
+#include "HelperFunctions.h"
 
-class XMLDocument {
+class XMLDocument : private HelperFunctions {
 private:
-	Queue<Root> roots;
+	Vector<Parent> roots;
 
 public:
 	void parseXML(const char* content);
@@ -11,11 +11,14 @@ public:
 	void print();
 	void close();
 
-	void select(String id, String key);
-	void set(String id, String key, String value);
+	void select(const String id, const String key);
+	void set(const String id, const String key, const String value);
+	void children(const String id);
+	void child(const String id, const String n);
 
-	Queue<String> operator/(const String query);
+
+	Vector<String> operator/(const String query);
 	String operator[](const String query);
-	Queue<String> id(const String query);
-	Queue<String> operator=(const String query);
+	Vector<String> id(const String query);
+	Vector<String> operator=(const String query);
 };

@@ -2,12 +2,14 @@
 
 static int counter = 0;
 
-void printQuery(Queue<String> queryResult) {
+void printQuery(Vector<String> queryResult) {
 	counter = 0;
-	while (!queryResult.isEmpty()) {
+	size_t index = 0;
+
+	while (index < queryResult.getSize()) {
 		counter++;
-		std::cout << queryResult.peek() << std::endl;
-		queryResult.pop();
+		std::cout << queryResult[index] << std::endl;
+		index++;
 	}
 }
 

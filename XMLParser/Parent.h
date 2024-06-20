@@ -1,6 +1,6 @@
 #pragma once
-#include "Queue.hpp"
 #include "Child.h"
+#include "Vector.hpp"
 
 class Parent {
 private:
@@ -8,7 +8,7 @@ private:
 	String attribute = nullptr;
 	String attributeValue = nullptr;
 	String value = nullptr;
-	Queue<Child> children;
+	Vector<Child> children;
 
 public:
 	Parent();
@@ -18,7 +18,7 @@ public:
 
 	void setValue(String value);
 
-	Queue<Child>& getChildren();
+	Vector<Child>& getChildren();
 	String getTag() const;
 	String getAttribute() const;
 	String getAttributeValue() const;

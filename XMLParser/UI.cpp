@@ -74,41 +74,56 @@ void UserInterface::start()
 				document.print();
 				continue;
 			}
+			else if (command == "select" || command == "Select") {
+				std::cout << "Enter id: ";
+				String id;
+				std::cin >> id;
 
-			int spaceSeparator = command.find(' ', command.getLength());
-			String command2 = command.substr2(0, spaceSeparator);
-			if (command2 == "select" || command2 == "Select") {
-				int spaceSeparator2 = command.find(spaceSeparator + 1, ' ', command.getLength());
-				int spaceSeparator3 = command.find(spaceSeparator2 + 1, ' ', command.getLength());
+				std::cout << "Enter key: ";
+				String key;
+				std::cin >> key;
 
-				String id = command.substr2(spaceSeparator, spaceSeparator2);
-				String key = command.substr2(spaceSeparator2, spaceSeparator3);
-				String value = command.substr2(spaceSeparator3, command.getLength());
+				document.select(id, key);
+			}
+			else if (command == "set" || command == "Set") {
+				std::cout << "Enter id: ";
+				String id;
+				std::cin >> id;
+
+				std::cout << "Enter key: ";
+				String key;
+				std::cin >> key;
+
+				std::cout << "Enter value: ";
+				String value;
+				std::cin >> value;
 
 				document.set(id, key, value);
 			}
-			else if (command2 == "set" || command2 == "Set") {
-				int spaceSeparator2 = command.find(spaceSeparator + 1, ' ', command.getLength());
-				String id = command.substr2(spaceSeparator, spaceSeparator2);
-				String key = command.substr2(spaceSeparator2, command.getLength());
+			else if (command == "children" || command == "Children") {
+				std::cout << "Enter id: ";
+				String id;
+				std::cin >> id;
+
+				document.children(id);
 			}
-			else if (command2 == "children" || command2 == "Children") {
+			else if (command == "child" || command == "Child") {
 
 			}
-			else if (command2 == "child" || command2 == "Child") {
+			else if (command == "text" || command == "Text") {
 
 			}
-			else if (command2 == "text" || command2 == "Text") {
+			else if (command == "delete" || command == "Delete") {
 
 			}
-			else if (command2 == "delete" || command2 == "Delete") {
+			else if (command == "newchild" || command == "Newchild" || command == "newChild" || command == "NewChild") {
 
 			}
-			else if (command2 == "newchild" || command2 == "Newchild" || command2 == "newChild" || command2 == "NewChild") {
+			else if (command == "xpath" || command == "Xpath" || command == "xPath" || command == "XPath") {
+				std::cout << "Enter query: ";
 
-			}
-			else if (command2 == "xpath" || command2 == "Xpath" || command2 == "xPath" || command2 == "XPath") {
-				String query = command.substr2(spaceSeparator, command.getLength());
+				String query;
+				std::cin >> query;
 
 				path.execute(query);
 			}

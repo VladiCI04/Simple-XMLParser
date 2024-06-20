@@ -1,16 +1,6 @@
 #include "XMLDocument.h"
 #include <fstream>
 
-size_t getFileSize(std::ifstream& in) {
-    size_t currentPos = in.tellg();
-    in.seekg(0, std::ios::end);
-
-    size_t size = in.tellg();
-    in.seekg(currentPos);
-
-    return size;
-}
-
 void XMLDocument::parseXML(const char* content)
 {
     std::ifstream stream(content);
@@ -27,6 +17,7 @@ void XMLDocument::parseXML(const char* content)
     stream.getline(lineInput, 1024, '\n');
 
     Parent curParent;
+
     while (lineInput[0] != '\0') {
         String line(lineInput);
 
@@ -44,10 +35,8 @@ void XMLDocument::parseXML(const char* content)
         String attributeValue(line.substr(equalSign + 2, endTag - 1));
         String value(line.substr(endTag + 1, (line.getLength() - 1) - (tag.getLength() + 2)));
 
-        if (tag[0] == '/') { // Closing tag
-            Root curRoot;
-            curRoot.nodes.push(curParent); 
-            roots.push(curRoot);
+        if (tag[0] == '/') { // Closing tag            
+            roots.pushBack(curParent);
             Parent parent(nullptr, nullptr, nullptr, nullptr);
             curParent = parent;
         }
@@ -57,13 +46,9 @@ void XMLDocument::parseXML(const char* content)
                 curParent = parent;
             }
             else {
-                if (curParent.getTag() == nullptr) {
+                if (curParent.getValue() != nullptr) {
                     Parent curChild(tag, attribute, attributeValue, value);
-                    Root curRoot;
-                    curRoot.nodes.push(curParent);
-                    roots.push(curRoot);
-                    Parent parent(nullptr, nullptr, nullptr, nullptr);
-                    curParent = parent;
+                    roots.pushBack(curChild);
                 }
                 else {
                     Child curChild(tag, attribute, attributeValue, value);
@@ -83,47 +68,27 @@ void XMLDocument::saveToFile(const char* fileName)
         throw std::exception("Error while open the file!");
     }
 
-    Queue<Root> rootsCopy = roots;
-    while (!rootsCopy.isEmpty()) {
-        Parent curParent = rootsCopy.peek().nodes.peek();
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
 
         String curParentTag = curParent.getTag();
-        String curParentAttribute = curParent.getAttribute();
-        String curParentAttributeValue = curParent.getAttributeValue();
-        String curParentValue = curParent.getValue();
+        printParentToFile(out, curParent);
 
-        out << '<' << curParentTag;
-        if (curParentAttribute != nullptr) {
-            out << ' ' << curParentAttribute << "=\"" << curParentValue << "\"";
-        }
-        if (curParentValue != nullptr) {
-            out << '>' << curParentValue << "</" << curParentTag;
-        }
-        out << '>' << std::endl;
+        Vector<Child> curChildren = curParent.getChildren();
+        size_t index2 = 0;
 
-        Queue<Child> curChildren = curParent.getChildren();
-        while (!curChildren.isEmpty()) {
-            Child curChild = curChildren.peek();
+        while (index2 < curChildren.getSize()) {
+            Child curChild = curChildren[index2];
 
-            String curChildTag = curChild.getTag();
-            String curChildAttribute = curChild.getAttribute();
-            String curChildAttributeValue = curChild.getAttributeValue();
-            String curChildValue = curChild.getValue();
+            printChildToFile(out, curChild);
 
-            out << "\t<" << curChildTag;
-            if (curChildAttribute != nullptr) {
-                out << ' ' << curChildAttribute << "=\"" << curChildAttributeValue << "\"";
-            }
-            if (curChildValue != nullptr) {
-                out << '>' << curChildValue << "</" << curChildTag;
-            }
-            out << '>' << std::endl;
-
-            curChildren.pop();
+            index2++;
         }
         out << "</" << curParentTag << '>' << std::endl;
 
-        rootsCopy.pop();
+        index++;
     }
 
     std::cout << "Saved!" << std::endl;
@@ -131,137 +96,160 @@ void XMLDocument::saveToFile(const char* fileName)
 
 void XMLDocument::print()
 {
-    Queue<Root> rootsCopy = roots;
-    while (!rootsCopy.isEmpty()) {
-        Parent curParent = rootsCopy.peek().nodes.peek();
+    size_t index = 0;
 
-        String curParentTag = curParent.getTag();
-        String curParentAttribute = curParent.getAttribute();
-        String curParentAttributeValue = curParent.getAttributeValue();
-        String curParentValue = curParent.getValue();
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
+        printParent(curParent);
 
-        std::cout << '<' << curParentTag;
-        if (curParentAttribute != nullptr) {
-            std::cout << ' ' << curParentAttribute << "=\"" << curParentAttributeValue << "\"";
+        Vector<Child> curChildren = curParent.getChildren();
+        size_t index2 = 0;
+
+        while (index2 < curChildren.getSize()) {
+            Child curChild = curChildren[index2];
+
+            printChild(curChild);
+
+            index2++;
         }
-        if (curParentValue != nullptr) {
-            std::cout << '>' << curParentValue << "</" << curParentTag;
-        }
-        std::cout << '>' << std::endl;
+        std::cout << "</" << curParent.getTag() << '>' << std::endl;
 
-        Queue<Child> curChildren = curParent.getChildren();
-        while (!curChildren.isEmpty()) {
-            Child curChild = curChildren.peek();
-
-            String curChildTag = curChild.getTag();
-            String curChildAttribute = curChild.getAttribute();
-            String curChildAttributeValue = curChild.getAttributeValue();
-            String curChildValue = curChild.getValue();
-
-            std::cout << "\t<" << curChildTag;
-            if (curChildAttribute != nullptr) {
-                std::cout << ' ' << curChildAttribute << "=\"" << curChildAttributeValue << "\"";
-            }
-            if (curChildValue != nullptr) {
-                std::cout << '>' << curChildValue << "</" << curChildTag;
-            }
-            std::cout << '>' << std::endl;
-
-            curChildren.pop();
-        }
-        std::cout << "</" << curParentTag << '>' << std::endl;
-
-        rootsCopy.pop();
+        index++;
     }
 }
 
 void XMLDocument::close()
 {
-    roots = Queue<Root>();
+    roots = Vector<Parent>();
 }
 
-void XMLDocument::select(String id, String key)
+void XMLDocument::select(const String id, const String key)
 {
-    Queue<Root> rootsCopy = roots;
-    while (!rootsCopy.isEmpty()) {
-        Parent curParent = rootsCopy.peek().nodes.peek();
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
         if (curParent.getAttribute() == id && curParent.getAttributeValue() == key) {
             std::cout << curParent.getValue() << std::endl;
             return;
         }
 
-        Queue<Child> children = curParent.getChildren();
-        while (!children.isEmpty()) {
-            Child curChild = children.peek();
+        Vector<Child> curChildren = curParent.getChildren();
+        size_t index2 = 0;
+
+        while (index2 < curChildren.getSize()) {
+            Child curChild = curChildren[index2];
+
             if (curChild.getAttribute() == id && curChild.getAttributeValue() == key) {
                 std::cout << curChild.getValue() << std::endl;
                 return;
             }
 
-            children.pop();
+            index2++;
         }
 
-        rootsCopy.pop();
+        index++;
     }
 }
 
-void XMLDocument::set(String id, String key, String value)
+void XMLDocument::set(const String id, const String key, const String value)
 {
-    Queue<Root> rootsCopy = roots;
-    Queue<Root> rootsNew;
+    size_t index = 0;
 
-    while (!rootsCopy.isEmpty()) {
-        Parent curParent = rootsCopy.peek().nodes.peek();
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
         if (curParent.getAttribute() == id && curParent.getAttributeValue() == key) {
             curParent.setValue(value);
+            return;
         }
         
-        Queue<Child> children = curParent.getChildren();
-        while (!children.isEmpty()) {
-            Child curChild = children.peek();
+        Vector<Child> children = curParent.getChildren();
+        size_t index2 = 0;
+
+        while (index2 < children.getSize()) {
+            Child curChild = children[index2];
+
             if (curChild.getAttribute() == id && curChild.getAttributeValue() == key) {
-                curChild.setValue(value);
+                roots[index].getChildren()[index2].setValue(value);
+                return;
             }
         
-            children.pop();
+            index2++;
         }
 
-        Root curRoot;
-        curRoot.nodes.push(curParent);
-        rootsNew.push(curRoot);
-
-        rootsCopy.pop();
+        index++;
     }
-
-    roots = rootsNew;
 }
 
-Queue<String> XMLDocument::operator/(const String query)
+void XMLDocument::children(const String id)
+{
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
+        Vector<Child> curChildren = curParent.getChildren();
+
+        if (curParent.getAttributeValue() == id) {
+            size_t index2 = 0;
+
+            while (index2 < curChildren.getSize()) {
+                Child curChild = curChildren[index2];
+
+                std::cout << index2 << ". " << curChild.getTag() << std::endl;
+
+                index2++;
+            }
+        }
+
+        index++;
+    }
+}
+
+void XMLDocument::child(const String id, const String n)
+{
+    unsigned parsedN = parseNumber(n);
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent curParent = roots[index];
+
+        if (curParent.getAttributeValue() == id) {
+            Vector<Child> curChildren = curParent.getChildren();
+            printChild(curChildren[n]);
+            return;
+        }
+
+        index++;
+    }
+}
+
+Vector<String> XMLDocument::operator/(const String query)
 {
     int separateSign = query.find(1, '/', query.getLength() - 1);
 
     String tag1(query.substr2(0, separateSign));
     String tag2(query.substr2(separateSign + 1, query.getLength()));
 
-    Queue<String> result;
-    Queue<Root> rootsCopy = roots;
+    Vector<String> result;
+    size_t index = 0;
 
-    while (!rootsCopy.isEmpty()) {
-        Parent curRoot = rootsCopy.peek().nodes.peek();
+    while (index < roots.getSize()) {
+        Parent curRoot = roots[index];
 
         if (curRoot.getTag() == tag1) {
-            Queue<Child> curChildren = curRoot.getChildren();
+            Vector<Child> curChildren = curRoot.getChildren();
+            size_t index2 = 0;
 
-            while (!curChildren.isEmpty()) {
-                if (curChildren.peek().getTag() == tag2 || tag2 == "*") {
-                    result.push(curChildren.peek().getValue());
+            while (index2 < curChildren.getSize()) {
+                if (curChildren[index2].getTag() == tag2 || tag2 == "*") {
+                    result.pushBack(curChildren[index2].getValue());
                 }
 
-                curChildren.pop();
+                index2++;
             }
         }
 
-        rootsCopy.pop();
+        index++;
     }
 
     return result;
@@ -275,57 +263,49 @@ String XMLDocument::operator[](const String query)
     String query2 = query.substr2(0, separateSign1);
     String index = query.substr(separateSign1 + 1, separateSign2);
 
-    unsigned parsedIndex = 0;
-    unsigned i = 0;
-    while (i < index.getLength()) {
-        parsedIndex *= 10;
-        parsedIndex += index[i] - '0';
-        i++;
-    }
+    unsigned parsedIndex = parseNumber(index);
 
-    Queue<String> children = operator/(query2);
-    for (unsigned i = 0; i < parsedIndex; i++) {
-        children.pop();
-    }
+    Vector<String> children = operator/(query2);
 
-    return children.peek();
+    return children[parsedIndex];
 }
 
-Queue<String> XMLDocument::id(const String query)
+Vector<String> XMLDocument::id(const String query)
 {
     int separateTag = query.find('[', query.getLength());
 
     String tag = query.substr2(0, separateTag);
     String attribute = query.substr2(separateTag + 2, query.getLength() - 1);
     
-    Queue<String> result;
-    Queue<Root> rootsCopy = roots;
+    Vector<String> result;
+    size_t index = 0;
 
-    while (!rootsCopy.isEmpty()) {
-        Parent curRoot = rootsCopy.peek().nodes.peek();
+    while (index < roots.getSize()) {
+        Parent curRoot = roots[index];
 
         if (curRoot.getTag() == tag && curRoot.getAttribute() == attribute) {
-            result.push(curRoot.getAttributeValue());
+            result.pushBack(curRoot.getAttributeValue());
         }
         else if (curRoot.getTag() == tag) {
-            Queue<Child> children = curRoot.getChildren();
+            Vector<Child> children = curRoot.getChildren();
+            size_t index2 = 0;
 
-            while (!children.isEmpty()) {
-                if (children.peek().getAttribute() == attribute) {
-                    result.push(children.peek().getAttributeValue());
+            while (index2 < children.getSize()) {
+                if (children[index2].getAttribute() == attribute) {
+                    result.pushBack(children[index2].getAttributeValue());
                 }
 
-                children.pop();
+                index2++;
             }
         }
 
-        rootsCopy.pop();
+        index++;
     }
 
     return result;
 }
 
-Queue<String> XMLDocument::operator=(const String query)
+Vector<String> XMLDocument::operator=(const String query)
 {
     int tagIndex = query.find('[', query.getLength());
     int attributeIndex = query.find(tagIndex, '=', query.getLength());
@@ -338,36 +318,37 @@ Queue<String> XMLDocument::operator=(const String query)
     String attributeValue(query.substr(attributeIndex + 2, attributeValueIndex2));
     String value(query.substr(valueIndex + 1, query.getLength()));
 
-    Queue<String> result2;
-    Queue<Root> rootsCopy = roots;
+    Vector<String> result;
+    size_t index = 0;
 
-    while (!rootsCopy.isEmpty()) {
-        Parent curRoot = rootsCopy.peek().nodes.peek();
+    while (index < roots.getSize()) {
+        Parent curRoot = roots[index];
 
         if (curRoot.getTag() == tag) {
-            Queue<Child> curChildren = curRoot.getChildren();
-            Queue<String> result;
-
+            Vector<Child> curChildren = curRoot.getChildren();
+            Vector<String> result2;
             bool hasValue = false;
-            while (!curChildren.isEmpty()) {
-                if (curChildren.peek().getTag() == value && hasValue) {
-                    result2.push(curChildren.peek().getValue());
+            size_t index2 = 0;
+
+            while (index2 < curChildren.getSize()) {
+                if (curChildren[index2].getTag() == value && hasValue) {
+                    result.pushBack(curChildren[index2].getValue());
                 }
-                else if (curChildren.peek().getTag() == value) {
-                    result.push(curChildren.peek().getValue());
+                else if (curChildren[index2].getTag() == value) {
+                    result2.pushBack(curChildren[index2].getValue());
                     hasValue = true;
                 }
 
-                if (curChildren.peek().getTag() == attribute && curChildren.peek().getValue() == attributeValue && hasValue) {
-                    result2 = result;
+                if (curChildren[index2].getTag() == attribute && curChildren[index2].getValue() == attributeValue && hasValue) {
+                    result = result2;
                 }
 
-                curChildren.pop();
+                index2++;
             }
         }
 
-        rootsCopy.pop();
+        index++;
     }
 
-    return result2;
+    return result;
 }

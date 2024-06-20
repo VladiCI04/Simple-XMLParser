@@ -5,8 +5,6 @@ class XPath {
 private:
 	XMLDocument& curDocument;
 
-	void select(const String id, const String key);
-
 public:
 	XPath() = default;
 	XPath(XMLDocument& document);

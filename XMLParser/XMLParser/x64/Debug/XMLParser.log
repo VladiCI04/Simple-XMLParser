@@ -1,16 +1,18 @@
 ﻿  XMLDocument.cpp
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(33,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(45,69): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(185,61): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(188,64): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(216,56): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(217,71): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(240,54): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(243,73): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(274,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(275,67): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(276,78): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(277,88): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(278,74): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(283,62): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\Vector.hpp(45,3): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\Vector.hpp(217,9): warning C4227: anachronism used: qualifiers on reference are ignored
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(24,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(36,69): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(228,61): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(231,64): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(260,56): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(261,71): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(275,54): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(278,73): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(310,51): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(311,67): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(312,78): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(313,88): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(314,74): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\XMLDocument.cpp(319,62): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
   XMLParser.vcxproj -> C:\Users\Vladi\OneDrive - Software University (SoftUni)\Desktop\GitHub\XMLParser\XMLParser\x64\Debug\XMLParser.exe

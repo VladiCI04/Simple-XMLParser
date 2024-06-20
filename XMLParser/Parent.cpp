@@ -9,7 +9,7 @@ Parent::Parent(const String tag, const String attribute, const String attributeV
 
 void Parent::addChild(const Child& child)
 {
-    children.push(child);
+    children.pushBack(child);
 }
 
 void Parent::setValue(String value)
@@ -17,7 +17,7 @@ void Parent::setValue(String value)
 	this->value = value;
 }
 
-Queue<Child>& Parent::getChildren()
+Vector<Child>& Parent::getChildren()
 {
 	return children;
 }
