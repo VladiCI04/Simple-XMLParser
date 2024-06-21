@@ -2,9 +2,14 @@
 
 Child::Child() = default;
 
-Child::Child(const String tag, const String attribute, const String attributeValue, const String value) : tag(tag), attribute(attribute), attributeValue(attributeValue), value(value)
+Child::Child(const String key, const String id, const String idValue, const String value) : key(key), id(id), idValue(idValue), value(value)
 {
 
+}
+
+void Child::setKey(String key)
+{
+    this->key = key;
 }
 
 void Child::setValue(String value)
@@ -12,19 +17,19 @@ void Child::setValue(String value)
     this->value = value;
 }
 
-String Child::getTag() const
+String Child::getKey() const
 {
-    return tag;
+    return key;
 }
 
-String Child::getAttribute() const
+String Child::getId() const
 {
-    return attribute;
+    return id;
 }
 
-String Child::getAttributeValue() const
+String Child::getIdValue() const
 {
-    return attributeValue;
+    return idValue;
 }
 
 String Child::getValue() const

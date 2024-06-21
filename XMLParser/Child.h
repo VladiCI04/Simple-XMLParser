@@ -3,19 +3,20 @@
 
 class Child {
 private:
-	String tag = nullptr;
-	String attribute = nullptr;
-	String attributeValue = nullptr;
+	String key = nullptr;
+	String id = nullptr;
+	String idValue = nullptr;
 	String value = nullptr;
 
 public:
 	Child();
-	Child(const String tag, const String attribute, const String attributeValue, const String value);
+	Child(const String key, const String id, const String idValue, const String value);
 
+	void setKey(String key);
 	void setValue(String value);
 
-	String getTag() const;
-	String getAttribute() const;
-	String getAttributeValue() const;
+	String getKey() const;
+	String getId() const;
+	String getIdValue() const;
 	String getValue() const;
 };

@@ -1,5 +1,5 @@
 #include "XMLDocument.h"
-#include <fstream>
+#pragma warning (disable : 4996)
 
 void XMLDocument::parseXML(const char* content)
 {
@@ -26,34 +26,28 @@ void XMLDocument::parseXML(const char* content)
         int space = line.find(' ', endTag);
         int equalSign = line.find('=', endTag);
 
-        String tag(line.substr(openTag + 1, space));
-        if (tag == nullptr) {
-            String tag2(line.substr(openTag + 1, endTag));
-            tag = tag2;
+        String key(line.substr(openTag + 1, space));
+        if (key == nullptr) {
+            String key2(line.substr(openTag + 1, endTag));
+            key = key2;
         }
-        String attribute(line.substr(space + 1, equalSign));
-        String attributeValue(line.substr(equalSign + 2, endTag - 1));
-        String value(line.substr(endTag + 1, (line.getLength() - 1) - (tag.getLength() + 2)));
+        String id(line.substr(space + 1, equalSign));
+        String idValue(line.substr(equalSign + 2, endTag - 1));
 
-        if (tag[0] == '/') { // Closing tag            
+        if (key[0] == '/') { // Closing tag            
             roots.pushBack(curParent);
-            Parent parent(nullptr, nullptr, nullptr, nullptr);
+            Parent parent(nullptr, nullptr, nullptr);
             curParent = parent;
         }
         else {
             if (endTag == line.getLength() - 1) {
-                Parent parent(tag, attribute, attributeValue, nullptr);
+                Parent parent(key, id, idValue);
                 curParent = parent;
             }
             else {
-                if (curParent.getValue() != nullptr) {
-                    Parent curChild(tag, attribute, attributeValue, value);
-                    roots.pushBack(curChild);
-                }
-                else {
-                    Child curChild(tag, attribute, attributeValue, value);
-                    curParent.addChild(curChild);
-                }
+                String value(line.substr(endTag + 1, (line.getLength() - 1) - (key.getLength() + 2)));
+                Child curChild(key, id, idValue, value);
+                curParent.addChild(curChild);
             }
         }
 
@@ -61,9 +55,19 @@ void XMLDocument::parseXML(const char* content)
     }
 }
 
-void XMLDocument::saveToFile(const char* fileName)
+void XMLDocument::saveToFile(const char* filePath, const char* fileName)
 {
-    std::ofstream out(fileName);
+    char file[BUFFERSIZE_CONSTANT * 2];
+    if (filePath != nullptr) {
+        strcpy(file, filePath);
+        strcat(file, "\\");
+        strcat(file, fileName);
+    }
+    else {
+        strcpy(file, fileName);
+    }
+
+    std::ofstream out(file);
     if (!out.is_open()) {
         throw std::exception("Error while open the file!");
     }
@@ -73,7 +77,7 @@ void XMLDocument::saveToFile(const char* fileName)
     while (index < roots.getSize()) {
         Parent curParent = roots[index];
 
-        String curParentTag = curParent.getTag();
+        String curParentTag = curParent.getKey();
         printParentToFile(out, curParent);
 
         Vector<Child> curChildren = curParent.getChildren();
@@ -112,7 +116,7 @@ void XMLDocument::print()
 
             index2++;
         }
-        std::cout << "</" << curParent.getTag() << '>' << std::endl;
+        std::cout << "</" << curParent.getKey() << '>' << std::endl;
 
         index++;
     }
@@ -129,27 +133,27 @@ void XMLDocument::select(const String id, const String key)
 
     while (index < roots.getSize()) {
         Parent curParent = roots[index];
-        if (curParent.getAttribute() == id && curParent.getAttributeValue() == key) {
-            std::cout << curParent.getValue() << std::endl;
-            return;
-        }
+        if (curParent.getIdValue() == id) {
+            Vector<Child> curChildren = curParent.getChildren();
+            size_t index2 = 0;
 
-        Vector<Child> curChildren = curParent.getChildren();
-        size_t index2 = 0;
+            while (index2 < curChildren.getSize()) {
+                Child curChild = curChildren[index2];
 
-        while (index2 < curChildren.getSize()) {
-            Child curChild = curChildren[index2];
+                if (curChild.getKey() == key) {
+                    std::cout << curChild.getValue() << std::endl;
+                }
 
-            if (curChild.getAttribute() == id && curChild.getAttributeValue() == key) {
-                std::cout << curChild.getValue() << std::endl;
-                return;
+                index2++;
             }
 
-            index2++;
+            return;
         }
 
         index++;
     }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
 }
 
 void XMLDocument::set(const String id, const String key, const String value)
@@ -157,28 +161,29 @@ void XMLDocument::set(const String id, const String key, const String value)
     size_t index = 0;
 
     while (index < roots.getSize()) {
-        Parent curParent = roots[index];
-        if (curParent.getAttribute() == id && curParent.getAttributeValue() == key) {
-            curParent.setValue(value);
+        Parent& curParent = roots[index];
+
+        if (curParent.getIdValue() == id) {
+            Vector<Child>& children = curParent.getChildren();
+            size_t index2 = 0;
+
+            while (index2 < children.getSize()) {
+                Child& curChild = children[index2];
+
+                if (curChild.getKey() == key) {
+                    curChild.setValue(value);
+                    return;
+                }
+
+                index2++;
+            }
+
+            std::cout << "Can't find this attribute in this element!" << std::endl;
             return;
         }
-        
-        Vector<Child> children = curParent.getChildren();
-        size_t index2 = 0;
-
-        while (index2 < children.getSize()) {
-            Child curChild = children[index2];
-
-            if (curChild.getAttribute() == id && curChild.getAttributeValue() == key) {
-                roots[index].getChildren()[index2].setValue(value);
-                return;
-            }
-        
-            index2++;
-        }
-
-        index++;
     }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
 }
 
 void XMLDocument::children(const String id)
@@ -187,22 +192,26 @@ void XMLDocument::children(const String id)
 
     while (index < roots.getSize()) {
         Parent curParent = roots[index];
-        Vector<Child> curChildren = curParent.getChildren();
 
-        if (curParent.getAttributeValue() == id) {
+        if (curParent.getIdValue() == id) {
+            Vector<Child> curChildren = curParent.getChildren();
             size_t index2 = 0;
 
             while (index2 < curChildren.getSize()) {
                 Child curChild = curChildren[index2];
 
-                std::cout << index2 << ". " << curChild.getTag() << std::endl;
+                std::cout << index2 << ". " << curChild.getKey() << std::endl;
 
                 index2++;
             }
+
+            return;
         }
 
         index++;
     }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
 }
 
 void XMLDocument::child(const String id, const String n)
@@ -211,24 +220,120 @@ void XMLDocument::child(const String id, const String n)
     size_t index = 0;
 
     while (index < roots.getSize()) {
-        Parent curParent = roots[index];
+        Parent& curParent = roots[index];
 
-        if (curParent.getAttributeValue() == id) {
-            Vector<Child> curChildren = curParent.getChildren();
-            printChild(curChildren[n]);
+        if (curParent.getIdValue() == id) {
+            Vector<Child>& curChildren = curParent.getChildren();
+            Child& curChild = curChildren[n];
+            printChild(curChild);
+
+            std::cout << "Enter new tag: ";
+            String newKey;
+            std::cin >> newKey;
+            curChild.setKey(newKey);
+
+            std::cout << "Enter new value: ";
+            String newValue;
+            std::cin >> newValue;
+            curChild.setValue(newValue);
+
             return;
         }
 
         index++;
     }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
+}
+
+void XMLDocument::text(const String id)
+{
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent& curParent = roots[index];
+
+        if (curParent.getIdValue() == id) {  
+            Vector<Child>& curChildren = curParent.getChildren();
+            size_t index2 = 0;
+
+            while (index2 < curChildren.getSize()) {
+                Child& curChild = curChildren[index2];
+
+                printChild(curChild);
+                std::cout << "Enter new value: ";
+                String newValue;
+                std::cin >> newValue;
+                curChild.setValue(newValue);
+
+                index2++;
+            }
+
+            return;
+        }
+
+        index++;
+    }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
+}
+
+void XMLDocument::deleted(const String id, const String key)
+{
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent& curParent = roots[index];
+        if (curParent.getIdValue() == id) {
+            Vector<Child>& curChildren = curParent.getChildren();
+            size_t index2 = 0;
+
+            while (index2 < curChildren.getSize()) {
+                Child& curChild = curChildren[index2];
+
+                if (curChild.getKey() == key) {
+                    curChildren.popAt(index2);
+                    return;
+                }
+
+                index2++;
+            }
+
+            std::cout << "Can't find this attribute in this element!" << std::endl;
+            return;
+        }
+
+        index++;
+    }
+
+    std::cout << "Can't find this attribute in this element!" << std::endl;
+}
+
+void XMLDocument::newChild(const String id, const String key)
+{
+    size_t index = 0;
+
+    while (index < roots.getSize()) {
+        Parent& curParent = roots[index];
+        if (curParent.getIdValue() == id) {
+            Vector<Child>& curChildren = curParent.getChildren();
+            Child curChild(key, nullptr, nullptr, nullptr);
+            curChildren.pushBack(curChild);
+            return;
+        }
+
+        index++;
+    }
+
+    std::cout << "Can't find this element!" << std::endl;
 }
 
 Vector<String> XMLDocument::operator/(const String query)
 {
     int separateSign = query.find(1, '/', query.getLength() - 1);
 
-    String tag1(query.substr2(0, separateSign));
-    String tag2(query.substr2(separateSign + 1, query.getLength()));
+    String key1(query.substr2(0, separateSign));
+    String key2(query.substr2(separateSign + 1, query.getLength()));
 
     Vector<String> result;
     size_t index = 0;
@@ -236,12 +341,12 @@ Vector<String> XMLDocument::operator/(const String query)
     while (index < roots.getSize()) {
         Parent curRoot = roots[index];
 
-        if (curRoot.getTag() == tag1) {
+        if (curRoot.getKey() == key1) {
             Vector<Child> curChildren = curRoot.getChildren();
             size_t index2 = 0;
 
             while (index2 < curChildren.getSize()) {
-                if (curChildren[index2].getTag() == tag2 || tag2 == "*") {
+                if (curChildren[index2].getKey() == key2 || key2 == "*") {
                     result.pushBack(curChildren[index2].getValue());
                 }
 
@@ -274,8 +379,8 @@ Vector<String> XMLDocument::id(const String query)
 {
     int separateTag = query.find('[', query.getLength());
 
-    String tag = query.substr2(0, separateTag);
-    String attribute = query.substr2(separateTag + 2, query.getLength() - 1);
+    String key = query.substr2(0, separateTag);
+    String idValue = query.substr2(separateTag + 2, query.getLength() - 1);
     
     Vector<String> result;
     size_t index = 0;
@@ -283,20 +388,19 @@ Vector<String> XMLDocument::id(const String query)
     while (index < roots.getSize()) {
         Parent curRoot = roots[index];
 
-        if (curRoot.getTag() == tag && curRoot.getAttribute() == attribute) {
-            result.pushBack(curRoot.getAttributeValue());
-        }
-        else if (curRoot.getTag() == tag) {
+        if (curRoot.getKey() == key && curRoot.getIdValue() == idValue) {
             Vector<Child> children = curRoot.getChildren();
             size_t index2 = 0;
 
             while (index2 < children.getSize()) {
-                if (children[index2].getAttribute() == attribute) {
-                    result.pushBack(children[index2].getAttributeValue());
-                }
+                Child curChild = children[index2];
+
+                result.pushBack(curChild.getKey());
 
                 index2++;
             }
+
+            break;
         }
 
         index++;
@@ -307,16 +411,16 @@ Vector<String> XMLDocument::id(const String query)
 
 Vector<String> XMLDocument::operator=(const String query)
 {
-    int tagIndex = query.find('[', query.getLength());
-    int attributeIndex = query.find(tagIndex, '=', query.getLength());
-    int attributeValueIndex = query.find(attributeIndex, '"', query.getLength());
-    int attributeValueIndex2 = query.find(attributeValueIndex + 1, '"', query.getLength());
-    int valueIndex = query.find(attributeValueIndex, '/', query.getLength());
+    int parentKeyIndex = query.find('[', query.getLength());
+    int childIdIndex = query.find(parentKeyIndex, '=', query.getLength());
+    int childIdValueIndex = query.find(childIdIndex, '"', query.getLength());
+    int childIdValueIndex2 = query.find(childIdValueIndex + 1, '"', query.getLength());
+    int childKeyIndex = query.find(childIdValueIndex, '/', query.getLength());
 
-    String tag(query.substr2(0, tagIndex));
-    String attribute(query.substr(tagIndex + 1, attributeIndex));
-    String attributeValue(query.substr(attributeIndex + 2, attributeValueIndex2));
-    String value(query.substr(valueIndex + 1, query.getLength()));
+    String key(query.substr2(0, parentKeyIndex));
+    String childId(query.substr(parentKeyIndex + 1, childIdIndex));
+    String childIdValue(query.substr(childIdIndex + 2, childIdValueIndex2));
+    String childKey(query.substr(childKeyIndex + 1, query.getLength()));
 
     Vector<String> result;
     size_t index = 0;
@@ -324,22 +428,22 @@ Vector<String> XMLDocument::operator=(const String query)
     while (index < roots.getSize()) {
         Parent curRoot = roots[index];
 
-        if (curRoot.getTag() == tag) {
+        if (curRoot.getKey() == key) {
             Vector<Child> curChildren = curRoot.getChildren();
             Vector<String> result2;
             bool hasValue = false;
             size_t index2 = 0;
 
             while (index2 < curChildren.getSize()) {
-                if (curChildren[index2].getTag() == value && hasValue) {
+                if (curChildren[index2].getKey() == childKey && hasValue) {
                     result.pushBack(curChildren[index2].getValue());
                 }
-                else if (curChildren[index2].getTag() == value) {
+                else if (curChildren[index2].getKey() == childKey) {
                     result2.pushBack(curChildren[index2].getValue());
                     hasValue = true;
                 }
 
-                if (curChildren[index2].getTag() == attribute && curChildren[index2].getValue() == attributeValue && hasValue) {
+                if (curChildren[index2].getKey() == childId && curChildren[index2].getValue() == childIdValue && hasValue) {
                     result = result2;
                 }
 

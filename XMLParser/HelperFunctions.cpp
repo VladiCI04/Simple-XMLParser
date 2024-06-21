@@ -1,4 +1,3 @@
-#include <fstream>
 #include "HelperFunctions.h"
 
 size_t HelperFunctions::getFileSize(std::ifstream& in)
@@ -18,7 +17,7 @@ unsigned HelperFunctions::parseNumber(const String number) {
 
     while (index < number.getLength()) {
         parsedNumber *= 10;
-        parsedNumber += number[index - '0'];
+        parsedNumber += number[index] - '0';
         index++;
     }
 
@@ -27,74 +26,66 @@ unsigned HelperFunctions::parseNumber(const String number) {
 
 void HelperFunctions::printParent(const Parent curParent)
 {
-    String curParentTag = curParent.getTag();
-    String curParentAttribute = curParent.getAttribute();
-    String curParentAttributeValue = curParent.getAttributeValue();
-    String curParentValue = curParent.getValue();
+    String curParentKey = curParent.getKey();
+    String curParentId = curParent.getId();
+    String curParentIdValue = curParent.getIdValue();
 
-    std::cout << '<' << curParentTag;
-    if (curParentAttribute != nullptr) {
-        std::cout << ' ' << curParentAttribute << "=\"" << curParentAttributeValue << "\"";
-    }
-    if (curParentValue != nullptr) {
-        std::cout << '>' << curParentValue << "</" << curParentTag;
+    std::cout << '<' << curParentKey;
+    if (curParentId != nullptr) {
+        std::cout << ' ' << curParentId << "=\"" << curParentIdValue << "\"";
     }
     std::cout << '>' << std::endl;
 }
 
 void HelperFunctions::printChild(const Child curChild)
 {
-    String curChildTag = curChild.getTag();
-    String curChildAttribute = curChild.getAttribute();
-    String curChildAttributeValue = curChild.getAttributeValue();
+    String curChildKey = curChild.getKey();
+    String curChildId = curChild.getId();
+    String curChildIdValue = curChild.getIdValue();
     String curChildValue = curChild.getValue();
 
-    std::cout << "\t<" << curChildTag;
-    if (curChildAttribute != nullptr) {
-        std::cout << ' ' << curChildAttribute << "=\"" << curChildAttributeValue << "\"";
+    std::cout << "\t<" << curChildKey;
+    if (curChildId != nullptr) {
+        std::cout << ' ' << curChildId << "=\"" << curChildIdValue << "\"";
     }
     if (curChildValue != nullptr) {
-        std::cout << '>' << curChildValue << "</" << curChildTag;
+        std::cout << '>' << curChildValue << "</" << curChildKey;
     }
     else {
-        std::cout << "></" << curChildTag;
+        std::cout << "></" << curChildKey;
     }
     std::cout << '>' << std::endl;
 }
 
 void HelperFunctions::printParentToFile(std::ofstream& out, const Parent curParent)
 {
-    String curParentTag = curParent.getTag();
-    String curParentAttribute = curParent.getAttribute();
-    String curParentAttributeValue = curParent.getAttributeValue();
-    String curParentValue = curParent.getValue();
+    String curParentKey = curParent.getKey();
+    String curParentId = curParent.getId();
+    String curParentIdValue = curParent.getIdValue();
 
-    out << '<' << curParentTag;
-    if (curParentAttribute != nullptr) {
-        out << ' ' << curParentAttribute << "=\"" << curParentAttributeValue << "\"";
-    }
-    if (curParentValue != nullptr) {
-        out << '>' << curParentValue << "</" << curParentTag;
+    out << '<' << curParentKey;
+    if (curParentId != nullptr) {
+        out << ' ' << curParentId << "=\"" << curParentIdValue << "\"";
     }
     out << '>' << std::endl;
 }
 
 void HelperFunctions::printChildToFile(std::ofstream& out, const Child curChild)
 {
-    String curChildTag = curChild.getTag();
-    String curChildAttribute = curChild.getAttribute();
-    String curChildAttributeValue = curChild.getAttributeValue();
+    String curChildKey = curChild.getKey();
+    String curChildId = curChild.getId();
+    String curChildIdValue = curChild.getIdValue();
     String curChildValue = curChild.getValue();
 
-    out << "\t<" << curChildTag;
-    if (curChildAttribute != nullptr) {
-        out << ' ' << curChildAttribute << "=\"" << curChildAttributeValue << "\"";
+    out << "\t<" << curChildKey;
+    if (curChildId != nullptr) {
+        out << ' ' << curChildId << "=\"" << curChildIdValue << "\"";
     }
     if (curChildValue != nullptr) {
-        out << '>' << curChildValue << "</" << curChildTag;
+        out << '>' << curChildValue << "</" << curChildKey;
     }
     else {
-        out << "></" << curChildTag;
+        out << "></" << curChildKey;
     }
     out << '>' << std::endl;
 }

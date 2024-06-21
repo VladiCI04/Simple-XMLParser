@@ -2,7 +2,7 @@
 
 Parent::Parent() = default;
 
-Parent::Parent(const String tag, const String attribute, const String attributeValue, const String value) : tag(tag), attribute(attribute), attributeValue(attributeValue), value(value)
+Parent::Parent(const String key, const String id, const String idValue) : key(key), id(id), idValue(idValue)
 {
 
 }
@@ -12,32 +12,22 @@ void Parent::addChild(const Child& child)
     children.pushBack(child);
 }
 
-void Parent::setValue(String value)
-{
-	this->value = value;
-}
-
 Vector<Child>& Parent::getChildren()
 {
 	return children;
 }
 
-String Parent::getTag() const
+String Parent::getKey() const
 {
-	return tag;
+	return key;
 }
 
-String Parent::getAttribute() const
+String Parent::getId() const
 {
-	return attribute;
+	return id;
 }
 
-String Parent::getAttributeValue() const
+String Parent::getIdValue() const
 {
-	return attributeValue;
-}
-
-String Parent::getValue() const
-{
-	return value;
+	return idValue;
 }

@@ -1,5 +1,8 @@
 #pragma once
 #include "Parent.h"
+#include <fstream>
+
+constexpr unsigned short BUFFERSIZE_CONSTANT = 200;
 
 class HelperFunctions {
 protected:
