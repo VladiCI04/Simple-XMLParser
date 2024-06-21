@@ -12,6 +12,16 @@ void Child::setKey(String key)
     this->key = key;
 }
 
+void Child::setId(String id)
+{
+    this->key = key;
+}
+
+void Child::setIdValue(String idValue)
+{
+    this->idValue = idValue;
+}
+
 void Child::setValue(String value)
 {
     this->value = value;

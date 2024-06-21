@@ -13,6 +13,8 @@ public:
 	Child(const String key, const String id, const String idValue, const String value);
 
 	void setKey(String key);
+	void setId(String id);
+	void setIdValue(String idValue);
 	void setValue(String value);
 
 	String getKey() const;

@@ -15,6 +15,9 @@ public:
 
 	void addChild(const Child& child);
 
+	void setId(const String id);
+	void setIdValue(const String idValue);
+
 	Vector<Child>& getChildren();
 	String getKey() const;
 	String getId() const;

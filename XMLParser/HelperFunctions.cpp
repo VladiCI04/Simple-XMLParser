@@ -11,7 +11,8 @@ size_t HelperFunctions::getFileSize(std::ifstream& in)
     return size;
 }
 
-unsigned HelperFunctions::parseNumber(const String number) {
+unsigned HelperFunctions::parseNumber(const String number) 
+{
     unsigned parsedNumber = 0;
     unsigned index = 0;
 
@@ -88,4 +89,29 @@ void HelperFunctions::printChildToFile(std::ofstream& out, const Child curChild)
         out << "></" << curChildKey;
     }
     out << '>' << std::endl;
+}
+
+void HelperFunctions::checkParentIds(Parent& curParent)
+{
+    String curParentIdValue = curParent.getIdValue();
+
+    if (curParentIdValue == nullptr) {
+        curParentIdValue = idChanger;
+        curParent.setId("id");
+        curParent.setIdValue(curParentIdValue);
+    }
+    
+    if (parentIdValues.find(curParentIdValue)) {
+        curParentIdValue += idChangerSymbol;
+        curParentIdValue += idChanger;
+        
+        idChanger[0]++;
+        curParent.setIdValue(curParentIdValue);
+
+        if (parentIdValues.find(curParentIdValue)) {
+            checkParentIds(curParent);
+        }
+    }
+    
+    parentIdValues.pushBack(curParentIdValue);
 }

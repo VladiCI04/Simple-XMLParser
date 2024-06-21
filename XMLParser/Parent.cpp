@@ -12,6 +12,16 @@ void Parent::addChild(const Child& child)
     children.pushBack(child);
 }
 
+void Parent::setId(const String id)
+{
+	this->id = id;
+}
+
+void Parent::setIdValue(const String idValue)
+{
+	this->idValue = idValue;
+}
+
 Vector<Child>& Parent::getChildren()
 {
 	return children;

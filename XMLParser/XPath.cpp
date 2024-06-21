@@ -25,6 +25,12 @@ XPath::XPath(XMLDocument& document) : curDocument(document)
 
 void XPath::execute(const String query)
 {
+	if (query == "count" || query == "Count") {
+		printQuery(count());
+		
+		return;
+	}
+
 	int separateListIndex = query.find('/', query.getLength());
 	int separateIndexIndex = query.find('[', query.getLength());
 	int separateIdIndex = query.find('@', query.getLength());

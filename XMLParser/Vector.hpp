@@ -43,6 +43,7 @@ public:
 	T popBack();
 	T popAt(size_t index);
 	T& const find(const unsigned index) const;
+	bool find(const String element) const;
 
 	bool empty() const;
 	void clear();
@@ -214,9 +215,19 @@ T Vector<T>::popAt(size_t index) {
 }
 
 template<class T>
-inline T& const Vector<T>::find(const unsigned index) const
-{
+T& const Vector<T>::find(const unsigned index) const {
 	return data[index];
+}
+
+template<class T>
+bool Vector<T>::find(const String element) const {
+	for (size_t index = 0; index < size; index++) {
+		if (data[index] == element) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 template<class T>
